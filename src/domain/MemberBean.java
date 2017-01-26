@@ -1,7 +1,7 @@
 package domain;
 
 public class MemberBean {
-	protected String uid, ssn, name, password, profileImg, phone, email;
+	protected String uid, ssn, name, password, profileImg, phone, email, rank;
 
 	public void setUid(String uid) {
 		this.uid = uid;
@@ -57,6 +57,14 @@ public class MemberBean {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getRank() {
+		return rank;
+	}
+
+	public void setRank(String rank) {
+		this.rank = rank;
 	}
 
 	@Override

@@ -10,13 +10,17 @@ public interface AdminService {
 	/*
 	 * READ: SELECT
 	 */
-	public MemberBean find(String id);
+	public MemberBean findById(String id);
+	public MemberBean[] findByName(String name);
+	public int countByName();
+	public MemberBean[] list();
+	public int count();
 	/*
 	 * UPDATE: UPDATE
 	 */
-	public void change(MemberBean member);
+	public void changeRank(MemberBean member);
 	/*
 	 * DELETE: DELETE
 	 */
-	public void remove(String id, String pw);
+	public void remove(MemberBean member);
 }

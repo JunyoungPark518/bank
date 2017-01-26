@@ -4,6 +4,7 @@ import java.util.Calendar;
 
 import constants.Account;
 import domain.AccountBean;
+import domain.MemberBean;
 import service.AccountService;
 import util.RandomGen;
 
@@ -23,7 +24,6 @@ public class AccountServiceImpl implements AccountService {
 		list = new AccountBean[10000];
 	}
 	
-	@Override
 	public AccountBean createAccount(String uid, String accountType) {
 		AccountBean account = new AccountBean(); // 사용하고 나서 없어지는 패턴 <- 의존관계(Dependency Relationships)
 		account.setAccountNo(String.valueOf(RandomGen.getRandomNum(999999, 100000)));
@@ -60,5 +60,47 @@ public class AccountServiceImpl implements AccountService {
 		} else {
 			return Account.WITHDRAW_FAIL;
 		}
+	}
+
+	@Override
+	public AccountBean create(MemberBean member) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public AccountBean findByAccountNo(String accountNo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public AccountBean[] findByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int countByName(String name) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public AccountBean[] list() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int count() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void drop(String accountNo) {
+		// TODO Auto-generated method stub
+		
 	}
 }

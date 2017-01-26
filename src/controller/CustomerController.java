@@ -7,7 +7,7 @@ import domain.MemberBean;
 import service.AccountService;
 import serviceImpl.AccountServiceImpl;
 
-public class Controller {
+public class CustomerController {
 	public void start() {
 		MemberBean member = null;
 		AccountBean account = null;
@@ -40,11 +40,10 @@ public class Controller {
 				show(member.getName() + "님 회원등록이 완료되었습니다.");
 				break;
 			case 2: // 통장개설
-				String accountType = "저축예금";
 				while(true) {
 					if(input("아이디를 입력하세요.").equals(member.getUid())) {
-						accountType = input("예금 타입은 어떻게 되나요?");
-						account = service.createAccount(member.getUid(), accountType);
+						account.setAccountType(input("예금 타입은 어떻게 되나요?"));
+						account = service.create(member);
 						show(account.toString());
 						break;
 					} else {

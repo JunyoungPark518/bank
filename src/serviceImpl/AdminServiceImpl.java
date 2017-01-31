@@ -4,12 +4,10 @@ import domain.MemberBean;
 import service.AdminService;
 
 public class AdminServiceImpl implements AdminService {
-	private MemberBean member;
 	private MemberBean[] arr;
 	private int count;
 	private int countByName;
 	public AdminServiceImpl() {
-		member = new MemberBean();
 		count = 0;
 		arr = new MemberBean[count];
 	}
@@ -21,26 +19,43 @@ public class AdminServiceImpl implements AdminService {
 			System.arraycopy(arr, 0, temp, 0, count);
 			arr = temp;
 		}
-		arr[count] = member;
-		count++;
+		arr[count++] = member;
 	}
 
 	
 	@Override
 	public MemberBean findById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		MemberBean mb = new MemberBean();
+		for(int i=0; i<count; i++) {
+			if(id.equals(arr[i].getUid())) {
+				mb = arr[i];
+				break;
+			}
+		}
+		return mb;
 	}
 
 	@Override
 	public MemberBean[] findByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		MemberBean[] mbarr = new MemberBean[countByName(name)];
+		int index = 0;
+		for(int i=0; i<count; i++) {
+			if(name.equals(arr[i].getName())) {
+				mbarr[index] = arr[i];
+				index++;
+			}
+		}
+		return mbarr;
 	}
 
 	@Override
-	public int countByName() {
-		// TODO Auto-generated method stub
+	public int countByName(String name) {
+		countByName = 0;
+		for(int i=0; i<count; i++) {
+			if(name.equals(arr[i].getName())) {
+				countByName++;
+			}
+		}
 		return countByName;
 	}
 
@@ -58,13 +73,35 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public void changeRank(MemberBean member) {
-		// TODO Auto-generated method stub
-		
+		for(int i=0; i<count; i++) {
+			if(member.getUid().equals(arr[i].getUid())) {
+				arr[i].setRank(member.getRank());
+				break;
+			}
+		}
 	}
 
 	@Override
-	public void remove(MemberBean member) {
-		// TODO Auto-generated method stub
-		
+	public void remove(String id) {
+		for(int i=0; i<count; i++) {
+			if(id.equals(arr[i].getUid())) {
+				arr[i] = arr[count];
+				arr[count] = null;
+				break;
+			}
+		}
+		count--;
+	}
+	
+	@Override
+	public boolean exist(String keyword) {
+		boolean exist = false;
+		for(int i=0; i<count; i++) {
+			if(keyword.equals(arr[i].getUid()) || keyword.equals(arr[i].getName())) {
+				exist = true;
+				break;
+			} 
+		}
+		return exist;
 	}
 }

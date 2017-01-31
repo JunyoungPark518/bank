@@ -2,7 +2,6 @@ package controller;
 
 import javax.swing.JOptionPane;
 
-import domain.AccountBean;
 import domain.MemberBean;
 import service.AdminService;
 import serviceImpl.AdminServiceImpl;
@@ -31,8 +30,26 @@ public class AdminController {
 				show(String.format("현재 회원수는 %d명입니다.", service.count()));
 				break;
 			case 2: // ID검색
+				String keyword = input("검색하려는 ID?");
+				member = service.findById(keyword);
+				if(service.exist(keyword)) {
+					show("아이디가 존재합니다.");
+				} else {
+					show("검색하신 아이디가 존재하지 않습니다.");
+				}
 				break;
 			case 3: // 이름검색
+				String result = input("검색하려는 이름?");
+				if(service.exist(result)) {
+					MemberBean[] list = service.findByName(result);
+					result = "";
+					for(int i=0; i<list.length; i++) {
+						result += list[i].toString() + "\n";
+					}
+					show(result);
+				} else {
+					show("검색하신 아이디가 존재하지 않습니다.");
+				}
 				break;
 			case 4: // 목록조회
 				if(service.count() == 0) {
@@ -46,8 +63,20 @@ public class AdminController {
 				}
 				break;
 			case 5: // 등급조정
+				member = new MemberBean();
+				String[] rank = input("ID, RANK?").split(",");
+				if(service.exist(rank[0])) {
+					member.setRank(rank[1]);
+					service.changeRank(member);
+					show("아이디의 등급이 " + rank[1] + "로 변경되었습니다.");
+				}
 				break;
 			case 6: // 삭제
+				member = new MemberBean();
+				String deletion = input("삭제할 ID를 입력하세요.");
+				if(service.exist(deletion)) {
+					service.remove(deletion);
+				}
 				break;
 			}
 		}
@@ -64,13 +93,5 @@ public class AdminController {
 	
 	private int inputInt(String str) {
 		return Integer.parseInt(JOptionPane.showInputDialog(str));
-	}
-	
-	private void notCase(AccountBean a) {
-		if(a == null) {
-			show("통장을 먼저 개설하세요.");
-		} else {
-			show("입력한 아이디와 일치하는 아이디가 없습니다.");
-		}
 	}
 }

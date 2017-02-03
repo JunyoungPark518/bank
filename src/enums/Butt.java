@@ -1,0 +1,5 @@
+package enums;
+
+public enum Butt {
+	EXIT, CLOSE, MEMBER_ADD, FIND_BY_ID, FIND_BY_NAME, LIST, RANK, DELETE
+}

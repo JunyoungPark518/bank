@@ -34,6 +34,8 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public void addArticle(ArticleBean param) {
+		Date d = new Date();
+		param.setRegdate(d.toString());
 		list.add(param);
 	}
 

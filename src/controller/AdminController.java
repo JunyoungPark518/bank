@@ -24,6 +24,7 @@ public class AdminController {
 		MemberBean[] arr = service.list();
 		while(true) {
 		switch(select) {
+			default:
 			case CLOSE:
 				return;
 			case MEMBER_ADD: // 회원등록
@@ -94,9 +95,5 @@ public class AdminController {
 	
 	private void show(String str) {
 		JOptionPane.showMessageDialog(null, str);
-	}
-	
-	private int inputInt(String str) {
-		return Integer.parseInt(JOptionPane.showInputDialog(str));
 	}
 }

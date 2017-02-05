@@ -42,9 +42,10 @@ public class BoardController {
 		Board[] board = {Board.EXIT, Board.CHECK, Board.ADD, Board.SEARCH, Board.CHANGE, Board.DELETE};
 		Board[] selboard = {Board.EXIT, Board.FIND_ONE, Board.FIND_SOME, Board.ALL};
 		Board[] chgboard = {Board.EXIT, Board.CHANGE_TITLE, Board.CHANGE_CONTENT };
+		Board bselect = null, searchselect = null, chgselect = null;
 		boolean temp = false;
 		while(true) {
-			Board bselect = (Board)JOptionPane.showInputDialog(null, "BOARD PAGE", "SELECT BOARD MENU", JOptionPane.QUESTION_MESSAGE, null, board, board[0]);
+			bselect = (Board)JOptionPane.showInputDialog(null, "BOARD PAGE", "SELECT BOARD MENU", JOptionPane.QUESTION_MESSAGE, null, board, board[0]);
 			switch(bselect) {
 			default:
 			case EXIT:
@@ -65,7 +66,7 @@ public class BoardController {
 			case SEARCH:
 				temp = true;
 				while(temp) {
-					Board searchselect = (Board)JOptionPane.showInputDialog(null, "BOARD PAGE", "SELECT SEARCH MENU", JOptionPane.QUESTION_MESSAGE, null, selboard, selboard[0]);
+					searchselect = (Board)JOptionPane.showInputDialog(null, "BOARD PAGE", "SELECT SEARCH MENU", JOptionPane.QUESTION_MESSAGE, null, selboard, selboard[0]);
 					switch(searchselect) {
 					default:
 					case EXIT:
@@ -94,7 +95,7 @@ public class BoardController {
 				a.setSeq(JOptionPane.showInputDialog("수정하려는 게시글의 번호 입력"));
 				temp = true;
 				while(temp) {
-					Board chgselect = (Board)JOptionPane.showInputDialog(null, "BOARD PAGE", "SELECT CHANGE MENU", JOptionPane.QUESTION_MESSAGE, null, chgboard, chgboard[0]);
+					chgselect = (Board)JOptionPane.showInputDialog(null, "BOARD PAGE", "SELECT CHANGE MENU", JOptionPane.QUESTION_MESSAGE, null, chgboard, chgboard[0]);
 					switch(chgselect) {
 					default:
 					case EXIT:

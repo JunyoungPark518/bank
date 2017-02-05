@@ -84,7 +84,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void delete(ArticleBean param) {
 		while(it.hasNext()) {
-			if(it.next().getSeq().equals(param.getSeq()) && it.next()!=null) {
+			if(it.next().getSeq().equals(param.getSeq())) {
 				it.remove();
 			}
 		}

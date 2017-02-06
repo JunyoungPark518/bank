@@ -1,18 +1,19 @@
 package serviceImpl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
-import java.util.Vector;
+import java.util.List;
 
 import domain.ArticleBean;
 import service.BoardService;
 
 public class BoardServiceImpl implements BoardService {
-	private Vector<ArticleBean> list;
+	private List<ArticleBean> list;
 	Iterator<ArticleBean> it;
 	
 	public BoardServiceImpl() {
-		list = new Vector<ArticleBean>(100, 100);
+		list = new ArrayList<ArticleBean>();
 		String[][] arr1 = {
 				{"1","James","Hello","2016-2-6 17:30"},
 				{"2","Tom","Hi","2016-8-6 17:30"},
@@ -34,8 +35,6 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public void addArticle(ArticleBean param) {
-		Date d = new Date();
-		param.setRegdate(d.toString());
 		list.add(param);
 	}
 
@@ -52,8 +51,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public Vector<ArticleBean> findSome(ArticleBean param) {
-		Vector<ArticleBean> listv = new Vector<ArticleBean>(100, 100);
+	public List<ArticleBean> findSome(ArticleBean param) {
+		List<ArticleBean> listv = new ArrayList<ArticleBean>();
 		for(ArticleBean a : list) {
 			if(param.getUid().equals(a.getUid())) {
 				listv.add(a);
@@ -63,7 +62,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public Vector<ArticleBean> list() {
+	public List<ArticleBean> list() {
 		return list;
 	}
 
@@ -84,7 +83,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void delete(ArticleBean param) {
 		while(it.hasNext()) {
-			if(it.next().getSeq().equals(param.getSeq())) {
+			if(it.next().getSeq().equals(param.getSeq()) && it.next()!=null) {
 				it.remove();
 			}
 		}

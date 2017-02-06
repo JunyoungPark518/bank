@@ -6,12 +6,6 @@ import domain.MemberBean;
 import service.AdminService;
 import serviceImpl.AdminServiceImpl;
 
-/**
- * @Author: Junyoung Park
- * @Date  : 2017. 2. 4.
- * @Description
- *          To use Admin Controller Back Up
- */
 public class AdminController2 {
 	public void start() {
 		MemberBean member = null;

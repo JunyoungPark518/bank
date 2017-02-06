@@ -1,6 +1,6 @@
 package controller;
 
-import java.util.Vector;
+import java.util.List;
 
 import javax.swing.JOptionPane;
 
@@ -37,7 +37,7 @@ import serviceImpl.BoardServiceImpl;
 public class BoardController {
 	public void start() {
 		BoardService service = new BoardServiceImpl();
-		Vector<ArticleBean> list = service.list();
+		List<ArticleBean> list = service.list();
 		ArticleBean a = new ArticleBean();
 		Board[] board = {Board.EXIT, Board.CHECK, Board.ADD, Board.SEARCH, Board.CHANGE, Board.DELETE};
 		Board[] selboard = {Board.EXIT, Board.FIND_ONE, Board.FIND_SOME, Board.ALL};
@@ -51,7 +51,7 @@ public class BoardController {
 			case EXIT:
 				return;
 			case CHECK:
-				JOptionPane.showMessageDialog(null, "CAPACITY: " + list.capacity() + "\nSIZE: " + list.size() + "\nLIST\n" + list);
+				JOptionPane.showMessageDialog(null, "\nSIZE: " + list.size() + "\nLIST\n" + list);
 				break;
 			case ADD:
 				String[] input = JOptionPane.showInputDialog("Sequence/Name/Title/Date").split("/");

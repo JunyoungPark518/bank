@@ -12,17 +12,17 @@ public class AdminController {
 		MemberBean member = null;
 		AdminService service = new AdminServiceImpl(); // 선언 및 초기화를 항상 같이 한다.
 		Butt[] buttons = {Butt.CLOSE, Butt.MEMBER_ADD, Butt.FIND_BY_ID, Butt.FIND_BY_NAME, Butt.LIST, Butt.RANK, Butt.DELETE };
+		Butt select = (Butt)JOptionPane.showInputDialog(
+				null, // frame
+				"PATIENT PAGE", // framtitle
+				"SELECT PATIENT MENU", // order
+				JOptionPane.QUESTION_MESSAGE, // type
+				null, // icon
+				buttons, // Array of choices
+				buttons[1] // default
+			);
 		MemberBean[] arr = service.list();
 		while(true) {
-			Butt select = (Butt)JOptionPane.showInputDialog(
-					null, // frame
-					"PATIENT PAGE", // framtitle
-					"SELECT PATIENT MENU", // order
-					JOptionPane.QUESTION_MESSAGE, // type
-					null, // icon
-					buttons, // Array of choices
-					buttons[1] // default
-					);
 		switch(select) {
 			default:
 			case CLOSE:

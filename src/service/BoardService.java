@@ -1,6 +1,6 @@
 package service;
 
-import java.util.Vector;
+import java.util.List;
 
 import domain.ArticleBean;
 
@@ -9,8 +9,8 @@ public interface BoardService {
 	public void addArticle(ArticleBean param);
 	// READ: SELECT
 	public ArticleBean findOne(ArticleBean param);
-	public Vector<ArticleBean> findSome(ArticleBean param);
-	public Vector<ArticleBean> list();
+	public List<ArticleBean> findSome(ArticleBean param);
+	public List<ArticleBean> list();
 	// UPDATE
 	public void update(ArticleBean param);
 	// DELETE

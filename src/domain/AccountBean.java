@@ -1,6 +1,10 @@
 package domain;
 
-public class AccountBean {
+import java.io.Serializable;
+
+// ObjetStream을 쓰기 위해 Serializable
+public class AccountBean implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private String uid, accountType, createDate, money, accountNo;
 	
 	public String getUid() {

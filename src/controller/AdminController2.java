@@ -3,13 +3,13 @@ package controller;
 import javax.swing.JOptionPane;
 
 import domain.MemberBean;
-import service.AdminService;
-import serviceImpl.AdminServiceImpl;
+import service.AdminService2;
+import serviceImpl.AdminServiceImpl2;
 
 public class AdminController2 {
 	public void start() {
 		MemberBean member = null;
-		AdminService service = new AdminServiceImpl(); // 선언 및 초기화를 항상 같이 한다.
+		AdminService2 service = new AdminServiceImpl2(); // 선언 및 초기화를 항상 같이 한다.
 		while(true) {
 			MemberBean[] arr = service.list();
 			switch(inputInt("1.회원등록\n"
